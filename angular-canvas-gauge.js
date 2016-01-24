@@ -262,6 +262,13 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.updateConfig(config);
       });
 
+      attributes.$observe('colorsNumbers', function(value) {
+        var
+          config = gauge.updateConfig({}).config;
+        config.colors.numbers = value;
+        gauge.updateConfig(config);
+      });
+
       attributes.$observe('colorsNeedleStart', function(value) {
         var
           config = gauge.updateConfig({}).config;
