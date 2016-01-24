@@ -1,7 +1,7 @@
 
 # angular-canvas-gauge
 
-This is an AngularJS 1.x directive for the excelent Mikhus's canv-gauge project we can found at https://github.com/Mikhus/canv-gauge
+This is an AngularJS 1.x directive for the excellent Mikhus's canv-gauge project we can found at https://github.com/Mikhus/canv-gauge
 
 ## How this work?
 

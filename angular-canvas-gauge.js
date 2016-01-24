@@ -1,5 +1,5 @@
 /**!
- * AngularJS 1.x directive for excelent Mikhus's HTML5 Canvas Gauge
+ * AngularJS 1.x directive for excellent Mikhus's HTML5 Canvas Gauge
  *
  * https://github.com/Mikhus/canv-gauge
  * https://github.com/dec/angular-canvas-gauge
