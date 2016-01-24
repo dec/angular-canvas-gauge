@@ -172,6 +172,18 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
           return result;
         };
 
+      // Auxiliar function to find true directive's arguments
+      var
+        isTrue = function(value) {
+          return value === 'true';
+        };
+
+      // Auxiliar function to retrive the gauge's current config
+      var
+        getConfig = function() {
+          return gauge.updateConfig({}).config;
+        };
+
       /* Observers for the directive attributes */
 
       attributes.$observe('value', function(value) {
@@ -179,7 +191,7 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
       });
 
       attributes.$observe('glow', function(value) {
-        gauge.updateConfig({glow: value === 'true'});
+        gauge.updateConfig({glow: isTrue(value)});
       });
 
       attributes.$observe('title', function(value) {
@@ -203,113 +215,13 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
       });
 
       attributes.$observe('maxValue', function(value) {
+        // canv-gauge expect a number here, never an string
         gauge.updateConfig({maxValue: parseFloat(value)});
       });
 
       attributes.$observe('minorTicks', function(value) {
+        // canv-gauge expect a number here, never an string
         gauge.updateConfig({minorTicks: parseFloat(value)});
-      });
-
-      attributes.$observe('strokeTicks', function(value) {
-        gauge.updateConfig({strokeTicks: value === 'true'});
-      });
-
-      attributes.$observe('animationFn', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.animation.fn = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsPlate', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.plate = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsUnits', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.units = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsTitle', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.title = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsNumbers', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.numbers = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsNeedleStart', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.needle.start = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsNeedleEnd', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.needle.end = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsMinorTicks', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.minorTicks = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('colorsMajorTicks', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.colors.majorTicks = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('valueboxVisible', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.valueBox.visible = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('valuetextVisible', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.valueText.visible = value;
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('circleOuterVisible', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.circles.outerVisible = value === 'true';
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('circleMiddleVisible', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.circles.middleVisible = value === 'true';
-        gauge.updateConfig(config);
-      });
-
-      attributes.$observe('circleInnerVisible', function(value) {
-        var
-          config = gauge.updateConfig({}).config;
-        config.circles.innerVisible = value === 'true';
-        gauge.updateConfig(config);
       });
 
       attributes.$observe('majorTicks', function(value) {
@@ -322,6 +234,66 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         // canv-gauge expect a complex object for this argument, take above to
         // the "parseHightlights" function, who parses the attribute's string.
         gauge.updateConfig({highlights: parseHightlights(value)});
+      });
+
+      attributes.$observe('strokeTicks', function(value) {
+        gauge.updateConfig({strokeTicks: isTrue(value)});
+      });
+
+      attributes.$observe('animationFn', function(value) {
+        gauge.updateConfig(getConfig().animation.fn = value);
+      });
+
+      attributes.$observe('colorsPlate', function(value) {
+        gauge.updateConfig(getConfig().colors.plate = value);
+      });
+
+      attributes.$observe('colorsUnits', function(value) {
+        gauge.updateConfig(getConfig().colors.units = value);
+      });
+
+      attributes.$observe('colorsTitle', function(value) {
+        gauge.updateConfig(getConfig().colors.title = value);
+      });
+
+      attributes.$observe('colorsNumbers', function(value) {
+        gauge.updateConfig(getConfig().colors.numbers = value);
+      });
+
+      attributes.$observe('colorsNeedleStart', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.start = value);
+      });
+
+      attributes.$observe('colorsNeedleEnd', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.end = value);
+      });
+
+      attributes.$observe('colorsMinorTicks', function(value) {
+        gauge.updateConfig(getConfig().colors.minorTicks = value);
+      });
+
+      attributes.$observe('colorsMajorTicks', function(value) {
+        gauge.updateConfig(getConfig().colors.majorTicks = value);
+      });
+
+      attributes.$observe('valueboxVisible', function(value) {
+        gauge.updateConfig(getConfig().valueBox.visible = isTrue(value));
+      });
+
+      attributes.$observe('valuetextVisible', function(value) {
+        gauge.updateConfig(getConfig().valueText.visible = isTrue(value));
+      });
+
+      attributes.$observe('circleOuterVisible', function(value) {
+        gauge.updateConfig(getConfig().circles.outerVisible = isTrue(value));
+      });
+
+      attributes.$observe('circleMiddleVisible', function(value) {
+        gauge.updateConfig(getConfig().circles.middleVisible = isTrue(value));
+      });
+
+      attributes.$observe('circleInnerVisible', function(value) {
+        gauge.updateConfig(getConfig().circles.innerVisible = isTrue(value));
       });
     }
   }
