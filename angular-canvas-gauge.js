@@ -27,9 +27,12 @@
  *
  */
 angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
+
   return {
     restrict: 'A',
     link: function(scope, element, attributes) {
+
+      // Defaultl Gauge's config/options
       var
         options = {
           renderTo: attributes.id,
@@ -122,10 +125,15 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
           }]
         };
 
+      // We can draw now the Gauge using the default options
       var
         gauge = new Gauge(options);
       gauge.draw();
 
+      // This function is taken "as is" (with little minor changes) from the
+      // canv-gauge project. If someday such project implement this function
+      // in a public way, then we can simply use it and remove from here.
+      // The function is used to parse the gauge's "hightlights" attribute.
       var
         parseHightlights = function(value) {
           var
@@ -164,74 +172,46 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
           return result;
         };
 
-      attributes.$observe('glow', function(value) {
-        gauge.updateConfig({
-          glow: value === 'true'
-        });
-      });
+      /* Observers for the directive attributes */
 
       attributes.$observe('value', function(value) {
         gauge.setValue(value);
       });
 
+      attributes.$observe('glow', function(value) {
+        gauge.updateConfig({glow: value === 'true'});
+      });
+
       attributes.$observe('title', function(value) {
-        gauge.updateConfig({
-          title: value
-        });
+        gauge.updateConfig({title: value});
       });
 
       attributes.$observe('units', function(value) {
-        gauge.updateConfig({
-          units: value
-        });
+        gauge.updateConfig({units: value});
       });
 
       attributes.$observe('width', function(value) {
-        gauge.updateConfig({
-          width: value
-        });
+        gauge.updateConfig({width: value});
       });
 
       attributes.$observe('height', function(value) {
-        gauge.updateConfig({
-          height: value
-        });
+        gauge.updateConfig({height: value});
       });
 
       attributes.$observe('minValue', function(value) {
-        gauge.updateConfig({
-          minValue: value
-        });
+        gauge.updateConfig({minValue: value});
       });
 
       attributes.$observe('maxValue', function(value) {
-        gauge.updateConfig({
-          maxValue: parseFloat(value)
-        });
+        gauge.updateConfig({maxValue: parseFloat(value)});
       });
 
       attributes.$observe('minorTicks', function(value) {
-        gauge.updateConfig({
-          minorTicks: parseFloat(value)
-        });
-      });
-
-      attributes.$observe('majorTicks', function(value) {
-        gauge.updateConfig({
-          majorTicks: value.split(' ')
-        });
-      });
-
-      attributes.$observe('highlights', function(value) {
-        gauge.updateConfig({
-          highlights: parseHightlights(value)
-        });
+        gauge.updateConfig({minorTicks: parseFloat(value)});
       });
 
       attributes.$observe('strokeTicks', function(value) {
-        gauge.updateConfig({
-          strokeTicks: value
-        });
+        gauge.updateConfig({strokeTicks: value === 'true'});
       });
 
       attributes.$observe('animationFn', function(value) {
@@ -330,6 +310,18 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
           config = gauge.updateConfig({}).config;
         config.circles.innerVisible = value === 'true';
         gauge.updateConfig(config);
+      });
+
+      attributes.$observe('majorTicks', function(value) {
+        // canv-gauge expect an array here. From an string like "0 10 20 30"
+        // canv-gauge expect [0, 10, 20, 30], so simply uses the split function
+        gauge.updateConfig({majorTicks: value.split(' ')});
+      });
+
+      attributes.$observe('highlights', function(value) {
+        // canv-gauge expect a complex object for this argument, take above to
+        // the "parseHightlights" function, who parses the attribute's string.
+        gauge.updateConfig({highlights: parseHightlights(value)});
       });
     }
   }
