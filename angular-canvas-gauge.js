@@ -50,10 +50,6 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
             'int': 3,
             'dec': 2
           },
-          majorTicksFormat: {
-            'int': 1,
-            'dec': 0
-          },
           glow: true,
           animation: {
             delay: 10,
