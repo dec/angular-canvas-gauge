@@ -190,6 +190,13 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.setValue(value);
       });
 
+      attributes.$observe('valueFormat', function(value) {
+        var
+          arg = value.split('.');
+        gauge.updateConfig(getConfig().valueFormat['int'] = arg[0] || undefined);
+        gauge.updateConfig(getConfig().valueFormat['dec'] = arg[1] || undefined);
+      });
+
       attributes.$observe('glow', function(value) {
         gauge.updateConfig({glow: isTrue(value)});
       });
@@ -215,12 +222,10 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
       });
 
       attributes.$observe('maxValue', function(value) {
-        // canv-gauge expect a number here, never an string
         gauge.updateConfig({maxValue: parseFloat(value)});
       });
 
       attributes.$observe('minorTicks', function(value) {
-        // canv-gauge expect a number here, never an string
         gauge.updateConfig({minorTicks: parseFloat(value)});
       });
 
@@ -242,6 +247,14 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
 
       attributes.$observe('animationFn', function(value) {
         gauge.updateConfig(getConfig().animation.fn = value);
+      });
+
+      attributes.$observe('animationDelay', function(value) {
+        gauge.updateConfig(getConfig().animation.delay = parseFloat(value));
+      });
+
+      attributes.$observe('animationDuration', function(value) {
+        gauge.updateConfig(getConfig().animation.duration = parseFloat(value));
       });
 
       attributes.$observe('colorsPlate', function(value) {
