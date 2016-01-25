@@ -1,4 +1,4 @@
-/**!
+/*!
  * AngularJS 1.x directive for excellent Mikhus's HTML5 Canvas Gauge
  *
  * https://github.com/Mikhus/canv-gauge
