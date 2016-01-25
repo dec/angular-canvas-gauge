@@ -8,13 +8,13 @@
  </head>
  <body ng-app="appSampleMod" ng-controller="appSampleCtrl">
 
-	<canvas canvas-gauge
-    id="myCanvas"
-    data-value="{{gauge.value}}"
-    data-width="{{gauge.width}}"
-    data-height="{{gauge.height}}"
-		data-min-value="{{gauge.minValue}}"
-		data-max-value="{{gauge.maxValue}}"
+  <canvas canvas-gauge
+   id="myCanvas"
+   data-value="{{gauge.value}}"
+   data-width="{{gauge.width}}"
+   data-height="{{gauge.height}}"
+   data-min-value="{{gauge.minValue}}"
+   data-max-value="{{gauge.maxValue}}"
 	></canvas>
 
   <script type="text/javascript" src="angular.min.js"></script>
@@ -22,7 +22,6 @@
   <script type="text/javascript" src="../angular-canvas-gauge.js"></script>
 
   <script>
-
     angular.module('appSampleMod', ['angular-canvas-gauge'])
     .controller('appSampleCtrl', ['$scope', '$interval', function($scope, $interval) {
 
@@ -39,7 +38,6 @@
         console.info($scope.gauge.value);
       }, 1000);
     }]);
-
   </script>
  </body>
 </html>
