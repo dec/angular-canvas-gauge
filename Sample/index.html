@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>   
+  <meta charset="utf-8" />
+  <meta name="viewport" 
+   content="width=device-width, initial-scale=1" />
+  <title>angular-canvas-gauge sample</title>
+ </head>
+ <body ng-app="appSampleMod" ng-controller="appSampleCtrl">
+
+	<canvas canvas-gauge
+    id="myCanvas"
+    data-value="{{gauge.value}}"
+    data-width="{{gauge.width}}"
+    data-height="{{gauge.height}}"
+		data-min-value="{{gauge.minValue}}"
+		data-max-value="{{gauge.maxValue}}"
+	></canvas>
+
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="canv-gauge.js"></script>
+  <script type="text/javascript" src="../angular-canvas-gauge.js"></script>
+
+  <script>
+
+    angular.module('appSampleMod', ['angular-canvas-gauge'])
+    .controller('appSampleCtrl', ['$scope', '$interval', function($scope, $interval) {
+
+      $scope.gauge = {
+        value: 50,
+        width: 300,
+        height: 300,
+        minValue: 1,
+        maxValue: 100
+      };
+
+      $interval(function() {
+        $scope.gauge.value =  Math.round(Math.random() * (100 - 1) + 1);
+        console.info($scope.gauge.value);
+      }, 1000);
+    }]);
+
+  </script>
+ </body>
+</html>
