@@ -277,6 +277,82 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.updateConfig(getConfig().colors.needle.end = value);
       });
 
+      attributes.$observe('colorsNeedleShadowup', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.shadowUp = value);
+      });
+
+      attributes.$observe('colorsNeedleShadowdown', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.shadowDown = value);
+      });
+
+      attributes.$observe('colorsNeedleCircleOuterstart', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.circle.outerStart = value);
+      });
+
+      attributes.$observe('colorsNeedleCircleOuterend', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.circle.outerEnd = value);
+      });
+
+      attributes.$observe('colorsNeedleCircleInnerstart', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.circle.innerStart = value);
+      });
+
+      attributes.$observe('colorsNeedleCircleInnerend', function(value) {
+        gauge.updateConfig(getConfig().colors.needle.circle.innerEnd = value);
+      });
+
+      attributes.$observe('colorsValueBoxRectstart', function(value) {
+        gauge.updateConfig(getConfig().colors.valueBox.rectStart = value);
+      });
+
+      attributes.$observe('colorsValueBoxRectend', function(value) {
+        gauge.updateConfig(getConfig().colors.valueBox.rectEnd = value);
+      });
+
+      attributes.$observe('colorsValueBoxBackground', function(value) {
+        gauge.updateConfig(getConfig().colors.valueBox.background = value);
+      });
+
+      attributes.$observe('colorsValueBoxShadow', function(value) {
+        gauge.updateConfig(getConfig().colors.valueBox.shadow = value);
+      });
+
+      attributes.$observe('colorsValueTextForeground', function(value) {
+        gauge.updateConfig(getConfig().colors.valueText.foreground = value);
+      });
+
+      attributes.$observe('colorsValueTextShadow', function(value) {
+        gauge.updateConfig(getConfig().colors.valueText.shadow = value);
+      });
+
+      attributes.$observe('colorsCircleShadow', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.shadow = value);
+      });
+
+      attributes.$observe('colorsCircleOuterStart', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.outerStart = value);
+      });
+
+      attributes.$observe('colorsCircleOuterEnd', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.outerEnd = value);
+      });
+
+      attributes.$observe('colorsCircleMiddleStart', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.middleStart = value);
+      });
+
+      attributes.$observe('colorsCircleMiddleEnd', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.middleEnd = value);
+      });
+
+      attributes.$observe('colorsCircleInnerStart', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.innerStart = value);
+      });
+
+      attributes.$observe('colorsCircleInnerEnd', function(value) {
+        gauge.updateConfig(getConfig().colors.circle.innerEnd = value);
+      });
+
       attributes.$observe('colorsMinorTicks', function(value) {
         gauge.updateConfig(getConfig().colors.minorTicks = value);
       });
@@ -293,15 +369,15 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.updateConfig(getConfig().valueText.visible = isTrue(value));
       });
 
-      attributes.$observe('circleOuterVisible', function(value) {
+      attributes.$observe('circlesOutervisible', function(value) {
         gauge.updateConfig(getConfig().circles.outerVisible = isTrue(value));
       });
 
-      attributes.$observe('circleMiddleVisible', function(value) {
+      attributes.$observe('circlesMiddlevisible', function(value) {
         gauge.updateConfig(getConfig().circles.middleVisible = isTrue(value));
       });
 
-      attributes.$observe('circleInnerVisible', function(value) {
+      attributes.$observe('circlesInnervisible', function(value) {
         gauge.updateConfig(getConfig().circles.innerVisible = isTrue(value));
       });
     }
