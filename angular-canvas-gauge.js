@@ -301,7 +301,7 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.updateConfig(getConfig().colors.needle.circle.innerEnd = value);
       });
 
-      attributes.$observe('colorsValueBoxRectstart', function(value) {
+      attributes.$observe('colorsValueboxRectstart', function(value) {
         gauge.updateConfig(getConfig().colors.valueBox.rectStart = value);
       });
 
