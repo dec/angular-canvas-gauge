@@ -305,23 +305,23 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.updateConfig(getConfig().colors.valueBox.rectStart = value);
       });
 
-      attributes.$observe('colorsValueBoxRectend', function(value) {
+      attributes.$observe('colorsValueboxRectend', function(value) {
         gauge.updateConfig(getConfig().colors.valueBox.rectEnd = value);
       });
 
-      attributes.$observe('colorsValueBoxBackground', function(value) {
+      attributes.$observe('colorsValueboxBackground', function(value) {
         gauge.updateConfig(getConfig().colors.valueBox.background = value);
       });
 
-      attributes.$observe('colorsValueBoxShadow', function(value) {
+      attributes.$observe('colorsValueboxShadow', function(value) {
         gauge.updateConfig(getConfig().colors.valueBox.shadow = value);
       });
 
-      attributes.$observe('colorsValueTextForeground', function(value) {
+      attributes.$observe('colorsValuetextForeground', function(value) {
         gauge.updateConfig(getConfig().colors.valueText.foreground = value);
       });
 
-      attributes.$observe('colorsValueTextShadow', function(value) {
+      attributes.$observe('colorsValuetextShadow', function(value) {
         gauge.updateConfig(getConfig().colors.valueText.shadow = value);
       });
 
