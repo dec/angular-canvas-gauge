@@ -329,27 +329,27 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
         gauge.updateConfig(getConfig().colors.circle.shadow = value);
       });
 
-      attributes.$observe('colorsCircleOuterStart', function(value) {
+      attributes.$observe('colorsCircleOuterstart', function(value) {
         gauge.updateConfig(getConfig().colors.circle.outerStart = value);
       });
 
-      attributes.$observe('colorsCircleOuterEnd', function(value) {
+      attributes.$observe('colorsCircleOuterend', function(value) {
         gauge.updateConfig(getConfig().colors.circle.outerEnd = value);
       });
 
-      attributes.$observe('colorsCircleMiddleStart', function(value) {
+      attributes.$observe('colorsCircleMiddlestart', function(value) {
         gauge.updateConfig(getConfig().colors.circle.middleStart = value);
       });
 
-      attributes.$observe('colorsCircleMiddleEnd', function(value) {
+      attributes.$observe('colorsCircleMiddleend', function(value) {
         gauge.updateConfig(getConfig().colors.circle.middleEnd = value);
       });
 
-      attributes.$observe('colorsCircleInnerStart', function(value) {
+      attributes.$observe('colorsCircleInnerstart', function(value) {
         gauge.updateConfig(getConfig().colors.circle.innerStart = value);
       });
 
-      attributes.$observe('colorsCircleInnerEnd', function(value) {
+      attributes.$observe('colorsCircleInnerend', function(value) {
         gauge.updateConfig(getConfig().colors.circle.innerEnd = value);
       });
 
