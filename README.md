@@ -3,6 +3,12 @@
 
 This is an AngularJS 1.x directive for the excellent Mikhus's canv-gauge project we can found at https://github.com/Mikhus/canv-gauge
 
+## Install
+
+From bower :
+
+`bower  install angular-canvas-gauge` 
+
 ## How this work?
 
 Just add the "angular-canvas-gauge.js" or "angular-canvas-gauge.min.js" and inject the "angular-canvas-gauge" in your application's module.
