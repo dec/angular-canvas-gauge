@@ -183,7 +183,7 @@ angular.module('angular-canvas-gauge', []).directive('canvasGauge', function() {
       /* Observers for the directive attributes */
 
       attributes.$observe('value', function(value) {
-        gauge.setValue(value);
+        gauge.setValue(parseFloat(value));
       });
 
       attributes.$observe('valueFormat', function(value) {
